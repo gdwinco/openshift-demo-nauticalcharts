@@ -1,0 +1,26 @@
+node {
+/* reset the forked nautical chart environment so the pipeline demo can be rerun */
+  stage('Scale Down') {
+    openshiftScale(deploymentConfig: 'nauticalchart-forked',replicaCount: '1')
+  }
+  stage('Reset Traffic Split') {
+    sh "oc set route-backends nauticalchart-original nauticalchart-forked=90 nauticalchart-original=10"
+    sleep 2
+    sh "oc set route-backends nauticalchart-original nauticalchart-forked=80 nauticalchart-original=20"
+    sleep 2
+    sh "oc set route-backends nauticalchart-original nauticalchart-forked=70 nauticalchart-original=30"
+    sleep 2
+    sh "oc set route-backends nauticalchart-original nauticalchart-forked=60 nauticalchart-original=40"
+    sleep 2
+    sh "oc set route-backends nauticalchart-original nauticalchart-forked=50 nauticalchart-original=50"
+    sleep 2
+    sh "oc set route-backends nauticalchart-original nauticalchart-forked=40 nauticalchart-original=60"
+    sleep 2
+    sh "oc set route-backends nauticalchart-original nauticalchart-forked=30 nauticalchart-original=70"
+    sleep 2
+    sh "oc set route-backends nauticalchart-original nauticalchart-forked=20 nauticalchart-original=80"
+    sleep 2
+    sh "oc set route-backends nauticalchart-original nauticalchart-forked=5 nauticalchart-original=95"
+    sleep 2
+  }
+}
