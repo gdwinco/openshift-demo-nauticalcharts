@@ -1,4 +1,4 @@
-node('maven') {
+node {
   stage 'build'
     openshiftBuild(buildConfig: 'nauticalchart-forked', showBuildLogs: 'true')
   stage('Test') {
