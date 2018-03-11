@@ -106,7 +106,7 @@ text field, then click the new button (in blue) to create the fix branch
  17. Once you are presented with the Paused for Input page, select __Proceed__18. Return to the OpenShift __Overview__ and watch the remainder of the pipeline build.19. Notice the following:
  19.1 The build scales to 2 pods 19.2 The build changes the traffic split to 100% forked 19.3 The original build removes the nauticalchart-original app. This is commented out to allow the demo to be rerun without going through all of the steps again. See "Reset Pipeline" below.20. Huzzah!
 
-## (Optinal) Resetting the Pipeline
+## (Optional) Resetting the Pipeline
 
 1. The `resources` of the github repo`https://raw.githubusercontent.com/gdwinco/openshift-demo-nauticalcharts/master/resources/` contains two aditional files:
 
